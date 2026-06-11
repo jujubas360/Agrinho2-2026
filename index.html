@@ -1,504 +1,478 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Harmonia Agro | Cultivo e Natureza</title>
-  <!-- Fontes orientais -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <style>
-    /* ========== RESET & BASE ========== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+/* ============================================
+   RESET & CONFIGURAÇÕES GLOBAIS
+============================================ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    body {
-      font-family: 'Noto Serif JP', 'Times New Roman', serif;
-      background-color: #fef9e6; /* papel de arroz */
-      color: #2e241f;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
 
-    h1, h2, h3, h4 {
-      font-family: 'Ma Shan Zheng', 'Noto Serif JP', cursive;
-      font-weight: 400;
-      letter-spacing: 2px;
-    }
+body {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  color: #1f2937;
+  background-color: #ffffff;
+  overflow-x: hidden;
+}
 
-    /* ========== VARIÁVEIS (paleta oriental) ========== */
-    :root {
-      --ink: #2c2418;
-      --paper: #fef9e6;
-      --clay: #c7b8a3;
-      --moss: #5a6e4a;
-      --bamboo: #8ba37e;
-      --vermillion: #b13e3e; /* vermelho selo */
-      --stone: #8b8174;
-      --shadow: rgba(0,0,0,0.05);
-    }
+/* ============================================
+   VARIÁVEIS CSS (TEMA)
+============================================ */
+:root {
+  /* Cores principais */
+  --green-50: #f0fdf4;
+  --green-100: #dcfce7;
+  --green-200: #bbf7d0;
+  --green-300: #86efac;
+  --green-400: #4ade80;
+  --green-500: #22c55e;
+  --green-600: #16a34a;
+  --green-700: #15803d;
+  --green-800: #166534;
+  --green-900: #14532d;
+  
+  --red-600: #dc2626;
+  --red-700: #b91c1c;
+  --amber-500: #f59e0b;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  
+  /* Tipografia */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-heading-weight: 700;
+  
+  /* Sombras */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  
+  /* Breakpoints */
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  
+  /* Transições */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 350ms ease;
+}
 
-    /* ========== ELEMENTOS GLOBAIS ========== */
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+/* ============================================
+   ELEMENTOS BASE
+============================================ */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transition-fast);
+}
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: 100%;
+}
 
-    section {
-      padding: 5rem 0;
-      position: relative;
-    }
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
 
-    /* Textura de papel */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" opacity="0.05"><path d="M30 10 L50 30 L10 50 Z" fill="none" stroke="%238b7355" stroke-width="0.5"/><circle cx="150" cy="80" r="15" fill="none" stroke="%238b7355" stroke-width="0.3"/><path d="M170 150 L190 170 L150 190 Z" fill="none" stroke="%238b7355"/></svg>');
-      background-repeat: repeat;
-      pointer-events: none;
-      z-index: -1;
-    }
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
-    /* ========== HEADER ESTILO ORIENTAL ========== */
-    header {
-      background: rgba(44, 36, 24, 0.92);
-      backdrop-filter: blur(8px);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 1px solid rgba(200, 180, 150, 0.3);
-    }
+/* ============================================
+   CLASSES UTILITÁRIAS (complementares)
+============================================ */
+.container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+.section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: 'Ma Shan Zheng', cursive;
-      font-size: 1.8rem;
-      color: #e6d5b8;
-    }
+/* Efeito gradiente em textos */
+.text-gradient {
+  background: linear-gradient(135deg, var(--green-600), var(--green-800));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
 
-    .logo i {
-      font-size: 2rem;
-      color: var(--bamboo);
-    }
+/* ============================================
+   HEADER (STICKY + SOMBRA)
+============================================ */
+header {
+  background-color: var(--green-800);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: var(--shadow-md);
+  transition: box-shadow var(--transition-base);
+}
 
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-    }
+header.scrolled {
+  box-shadow: var(--shadow-lg);
+}
 
-    .nav-links a {
-      color: #e6d5b8;
-      font-size: 1rem;
-      letter-spacing: 1px;
-      transition: color 0.3s;
-      position: relative;
-    }
+nav a {
+  font-weight: 500;
+  position: relative;
+}
 
-    .nav-links a:hover {
-      color: var(--bamboo);
-    }
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--green-400);
+  transition: width var(--transition-base);
+}
 
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: var(--bamboo);
-      transition: width 0.3s;
-    }
+nav a:hover::after {
+  width: 100%;
+}
 
-    .nav-links a:hover::after {
-      width: 100%;
-    }
+/* Botão header */
+header button {
+  background-color: var(--green-600);
+  border-radius: 9999px;
+  padding: 0.5rem 1.5rem;
+  font-weight: 500;
+  transition: all var(--transition-base);
+}
 
-    .btn-contato {
-      background: none;
-      border: 1px solid var(--bamboo);
-      padding: 0.5rem 1.8rem;
-      border-radius: 30px;
-      color: #e6d5b8;
-      font-family: inherit;
-      transition: all 0.3s;
-    }
+header button:hover {
+  background-color: var(--green-500);
+  transform: scale(1.02);
+}
 
-    .btn-contato:hover {
-      background: var(--bamboo);
-      color: #2c2418;
-      cursor: pointer;
-    }
+/* ============================================
+   HERO SECTION
+============================================ */
+.hero-bg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url('https://source.unsplash.com/random/1920x1080/?soybean-field');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  animation: fadeIn 1s ease-out;
+}
 
-    /* ========== HERO - PAISAGEM ORIENTAL ========== */
-    .hero {
-      background-image: linear-gradient(rgba(30, 25, 20, 0.5), rgba(30, 25, 20, 0.6)), url('https://images.pexels.com/photos/1141228/pexels-photo-1141228.jpeg?auto=compress&cs=tinysrgb&w=1600'); /* campos e montanhas */
-      background-size: cover;
-      background-position: center 30%;
-      min-height: 90vh;
-      display: flex;
-      align-items: center;
-      text-align: center;
-      color: white;
-    }
-
-    .hero-content {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-
-    .hero h2 {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-      letter-spacing: 6px;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      font-style: italic;
-    }
-
-    .hero-btn {
-      display: inline-block;
-      background: rgba(139, 163, 126, 0.85);
-      backdrop-filter: blur(4px);
-      padding: 0.8rem 2rem;
-      border-radius: 40px;
-      font-weight: 500;
-      transition: all 0.3s;
-      border: 1px solid rgba(255,255,240,0.5);
-    }
-
-    .hero-btn:hover {
-      background: var(--bamboo);
-      transform: translateY(-3px);
-    }
-
-    /* ========== SEÇÃO IMPORTÂNCIA ========== */
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 3rem;
-      align-items: center;
-    }
-
-    .stat-box {
-      background: rgba(200, 185, 160, 0.2);
-      backdrop-filter: blur(2px);
-      padding: 2rem;
-      border-radius: 30px;
-      text-align: center;
-      border-left: 4px solid var(--bamboo);
-      transition: all 0.3s;
-    }
-
-    .stat-box:hover {
-      transform: translateY(-5px);
-      background: rgba(200, 185, 160, 0.3);
-    }
-
-    .stat-number {
-      font-size: 4rem;
-      font-weight: 700;
-      color: var(--moss);
-      font-family: 'Noto Serif JP', serif;
-    }
-
-    /* ========== TECNOLOGIAS SUSTENTÁVEIS (cards) ========== */
-    .grid-4 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2rem;
-    }
-
-    .card {
-      background: white;
-      padding: 2rem 1.5rem;
-      border-radius: 24px;
-      text-align: center;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.03);
-      transition: all 0.25s ease;
-      border: 1px solid #e2d9cd;
-    }
-
-    .card i {
-      font-size: 2.5rem;
-      color: var(--bamboo);
-      margin-bottom: 1rem;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
-      border-color: var(--bamboo);
-    }
-
-    /* ========== DESAFIOS ========== */
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-    }
-
-    .challenge-card {
-      background: #fef5e8;
-      padding: 2rem;
-      border-radius: 32px;
-      text-align: center;
-      border-bottom: 3px solid var(--vermillion);
-    }
-
-    /* ========== SOLUÇÕES (fundo escuro) ========== */
-    .solutions {
-      background: #2e2a24;
-      color: #f0e6d2;
-    }
-
-    .solutions .card {
-      background: rgba(255,250,235,0.1);
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(200,180,140,0.3);
-      color: #f0e6d2;
-    }
-
-    /* ========== AÇÃO - CALCULADORA, QUIZ, FORMS ========== */
-    .action-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-    }
-
-    .action-card {
-      background: white;
-      border-radius: 32px;
-      padding: 2rem;
-      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
-      border: 1px solid #ddd0bd;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 0.8rem;
-      margin-top: 0.5rem;
-      margin-bottom: 1rem;
-      border: 1px solid #d6c8b8;
-      border-radius: 24px;
-      background: #fffcf5;
-      font-family: inherit;
-    }
-
-    button {
-      background: var(--moss);
-      color: white;
-      border: none;
-      padding: 0.7rem 1.5rem;
-      border-radius: 40px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    button:hover {
-      background: #4a5e3a;
-      transform: scale(0.98);
-    }
-
-    /* selo estilo hanko */
-    .hanko {
-      display: inline-block;
-      width: 50px;
-      height: 50px;
-      background: var(--vermillion);
-      color: #fef9e6;
-      border-radius: 50%;
-      text-align: center;
-      line-height: 50px;
-      font-family: 'Ma Shan Zheng';
-      font-size: 1.5rem;
-      margin-right: 10px;
-      box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-    }
-
-    footer {
-      background: #1f1b16;
-      color: #cabb9e;
-      text-align: center;
-      padding: 3rem 0;
-    }
-
-    /* Responsividade */
-    @media (max-width: 800px) {
-      .grid-2, .grid-3, .action-grid {
-        grid-template-columns: 1fr;
-      }
-      .nav-links {
-        display: none;
-      }
-      .hero h2 {
-        font-size: 2.5rem;
-      }
-      section {
-        padding: 3rem 0;
-      }
-    }
-
-    /* Elemento de assinatura (caligrafia) */
-    .quote-sign {
-      text-align: right;
-      font-family: 'Ma Shan Zheng';
-      font-size: 1.2rem;
-      margin-top: 2rem;
-      border-top: 1px solid #ddd0bd;
-      padding-top: 1rem;
-    }
-  </style>
-</head>
-<body>
-
-<header>
-  <nav>
-    <div class="logo">
-      <i class="fa-solid fa-mountain-sun"></i>
-      <span>Harmonia Agro</span>
-    </div>
-    <div class="nav-links">
-      <a href="#inicio">Início</a>
-      <a href="#producao">Cultivo</a>
-      <a href="#sustentabilidade">Equilíbrio</a>
-      <a href="#desafios">Desafios</a>
-      <a href="#solucoes">Caminhos</a>
-      <a href="#acao">Ação</a>
-    </div>
-    <button class="btn-contato">Contato</button>
-  </nav>
-</header>
-
-<section id="inicio" class="hero">
-  <div class="hero-content">
-    <div class="hanko">和</div>
-    <h2>Colher hoje,<br>floresta amanhã</h2>
-    <p>O agronegócio em harmonia com a natureza - inspirado na sabedoria oriental.</p>
-    <a href="#acao" class="hero-btn">Descubra o caminho</a>
-  </div>
-</section>
-
-<section id="producao" class="container">
-  <h2 style="text-align:center; font-size:2.5rem;">基盤 da economia</h2>
-  <div class="grid-2">
-    <div>
-      <div class="stat-box"><span class="stat-number">24-27%</span><br>do PIB brasileiro</div>
-      <div class="stat-box" style="margin-top:1.5rem;"><span class="stat-number">40%</span><br>das exportações</div>
-    </div>
-    <div>
-      <p>O campo é a espinha dorsal do Brasil. Com técnicas milenares e inovação, podemos nutrir o mundo sem ferir a terra. Como os antigos jardins japoneses, cada detalhe tem propósito.</p>
-      <div class="quote-sign">— Agricultura consciente</div>
-    </div>
-  </div>
-</section>
-
-<section id="sustentabilidade" style="background: #f1ede4;">
-  <div class="container">
-    <h2 style="text-align:center; font-size:2.5rem;">Tecnologia & Tradição</h2>
-    <div class="grid-4">
-      <div class="card"><i class="fa-solid fa-microchip"></i><h3>Agricultura de Precisão</h3><p>Dados e respeito à terra</p></div>
-      <div class="card"><i class="fa-solid fa-water"></i><h3>Irrigação Zen</h3><p>Uso consciente da água</p></div>
-      <div class="card"><i class="fa-solid fa-drone"></i><h3> drones sensíveis</h3><p>Observação aérea</p></div>
-      <div class="card"><i class="fa-solid fa-leaf"></i><h3>Energia natural</h3><p>Sol e vento no campo</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="desafios" class="container">
-  <h2 style="text-align:center; font-size:2rem; color:#b13e3e;">三 grandes obstáculos</h2>
-  <div class="grid-3">
-    <div class="challenge-card"><i class="fa-solid fa-tree"></i><h3>Desmatamento</h3><p>Perda de habitat e desequilíbrio.</p></div>
-    <div class="challenge-card"><i class="fa-solid fa-droplet"></i><h3>Escassez hídrica</h3><p>70% da água doce vai para agricultura.</p></div>
-    <div class="challenge-card"><i class="fa-solid fa-smog"></i><h3>Carbono</h3><p>Fertilizantes e pecuária intensiva.</p></div>
-  </div>
-</section>
-
-<section id="solucoes" class="solutions">
-  <div class="container">
-    <h2 style="text-align:center; font-size:2.5rem;">O caminho do meio</h2>
-    <div class="grid-4">
-      <div class="card"><h3>🌾 Agricultura Regenerativa</h3><p>Solo vivo, futuro fértil.</p></div>
-      <div class="card"><h3>🌳 ILPF</h3><p>Integração lavoura-pecuária-floresta</p></div>
-      <div class="card"><h3>⚖️ Carbono neutro</h3><p>Compensação e harmonia</p></div>
-      <div class="card"><h3>🔗 Rastreabilidade</h3><p>Transparência total</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="acao" class="container">
-  <h2 style="text-align:center; font-size:2.5rem;">Sua pegada harmoniosa</h2>
-  <div class="action-grid">
-    <!-- Calculadora -->
-    <div class="action-card">
-      <h3>📊 Calculadora de impacto</h3>
-      <label>Área (hectares)</label>
-      <input type="number" id="area" value="150">
-      <button onclick="calcularImpacto()">Calcular economia</button>
-      <div id="resultado" style="margin-top:1rem; font-weight:bold;"></div>
-    </div>
-    <!-- Quiz -->
-    <div class="action-card">
-      <h3>🍃 Quiz do agricultor zen</h3>
-      <button onclick="alert('Em breve: perguntas inspiradas nos 5 elementos.')">Iniciar jornada</button>
-    </div>
-    <!-- Contato -->
-    <div class="action-card">
-      <h3>✍️ Escreva-nos</h3>
-      <input type="text" placeholder="Seu nome">
-      <input type="email" placeholder="E-mail">
-      <textarea rows="3" placeholder="Mensagem..."></textarea>
-      <button>Enviar mensagem</button>
-    </div>
-  </div>
-  <div class="quote-sign" style="margin-top:3rem;">“A terra não pertence ao homem; o homem pertence à terra.” — provérbio indígena e oriental</div>
-</section>
-
-<footer>
-  <div class="container">
-    <i class="fa-solid fa-circle-nodes" style="font-size: 2rem; margin-bottom: 1rem; display: inline-block;"></i>
-    <p>Harmonia Agro · Cultivo ancestral, tecnologia consciente</p>
-    <p style="font-size: 0.8rem; margin-top: 1rem;">© 2026 | Inspirado na estética wabi-sabi e no equilíbrio yin-yang</p>
-  </div>
-</footer>
-
-<script>
-  function calcularImpacto() {
-    const area = document.getElementById('area').value;
-    if (!area) return;
-    const economia = (area * 7200).toLocaleString('pt-BR');
-    document.getElementById('resultado').innerHTML = `<span style="color:#5a6e4a;">💧 Economia anual: ${economia} litros de água</span><br><small>com manejo sustentável</small>`;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-</script>
-</body>
-</html>
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-bg h2 {
+  line-height: 1.2;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.hero-bg a {
+  display: inline-block;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.hero-bg a:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* ============================================
+   SEÇÕES GERAIS
+============================================ */
+section h2 {
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+/* Cards de tecnologia e soluções */
+.card {
+  background-color: white;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+}
+
+.card i {
+  font-size: 3rem;
+  color: var(--green-600);
+  margin-bottom: 1rem;
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* Cards com fundo translúcido (soluções) */
+.backdrop-blur {
+  backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   CALCULADORA DE IMPACTO
+============================================ */
+#acao .border-green-200 {
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+#acao .border-green-200:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+input,
+textarea {
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 100%;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--green-500);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+}
+
+button[onclick="calcularImpacto()"],
+button.w-full.bg-green-700,
+button.w-full.bg-amber-500 {
+  transition: all var(--transition-base);
+}
+
+button[onclick="calcularImpacto()"]:hover,
+button.w-full.bg-green-700:hover {
+  background-color: var(--green-600);
+  transform: scale(1.01);
+}
+
+button.w-full.bg-amber-500:hover {
+  background-color: #d97706;
+  transform: scale(1.01);
+}
+
+/* Resultado da calculadora */
+#resultado {
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   FOOTER
+============================================ */
+footer {
+  background-color: var(--green-900);
+  color: white;
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+
+footer .fa-leaf {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    text-shadow: 0 0 0 rgba(74, 222, 128, 0);
+  }
+  50% {
+    text-shadow: 0 0 8px rgba(74, 222, 128, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 0 rgba(74, 222, 128, 0);
+  }
+}
+
+/* ============================================
+   RESPONSIVIDADE
+============================================ */
+/* Tablet (768px - 1023px) */
+@media (max-width: 1023px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  .hero-bg h2 {
+    font-size: 3rem;
+  }
+  
+  .hero-bg p {
+    font-size: 1.25rem;
+  }
+  
+  .grid.md\:grid-cols-2,
+  .grid.md\:grid-cols-3,
+  .grid.md\:grid-cols-4 {
+    gap: 1.5rem;
+  }
+}
+
+/* Celular (até 767px) */
+@media (max-width: 767px) {
+  html {
+    font-size: 14px;
+  }
+  
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .hero-bg {
+    background-attachment: scroll;
+    min-height: 90vh;
+  }
+  
+  .hero-bg h2 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-bg p {
+    font-size: 1rem;
+  }
+  
+  header nav .hidden {
+    display: none;
+  }
+  
+  header button {
+    padding: 0.4rem 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  .card {
+    padding: 1.5rem;
+  }
+  
+  .card h3 {
+    font-size: 1.25rem;
+  }
+  
+  #acao .grid.md\:grid-cols-3 {
+    gap: 2rem;
+  }
+  
+  footer {
+    padding: 2rem 1rem;
+  }
+}
+
+/* Ajuste para telas muito pequenas (<=480px) */
+@media (max-width: 480px) {
+  .hero-bg h2 {
+    font-size: 2rem;
+  }
+  
+  .hero-bg a {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  input, textarea {
+    padding: 0.75rem;
+  }
+}
+
+/* ============================================
+   ANIMAÇÕES ADICIONAIS
+============================================ */
+/* Efeito de entrada suave para seções ao scroll (opcional) */
+section {
+  animation: fadeInUp 0.6s ease-out backwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Aplica delay progressivo para cards dentro de grids */
+.grid > div:nth-child(1) { animation-delay: 0.05s; }
+.grid > div:nth-child(2) { animation-delay: 0.1s; }
+.grid > div:nth-child(3) { animation-delay: 0.15s; }
+.grid > div:nth-child(4) { animation-delay: 0.2s; }
+
+/* ============================================
+   MELHORIAS PARA BOTÕES E INTERAÇÃO
+============================================ */
+button:active {
+  transform: scale(0.98);
+}
+
+/* Estilo para links no footer */
+footer a {
+  color: var(--green-300);
+}
+
+footer a:hover {
+  color: white;
+  text-decoration: underline;
+}
