@@ -1,5 +1,5 @@
 /* ============================================
-   RESET & CONFIGURAÇÕES GLOBAIS
+   RESET & CONFIGURAÇÕES GLOBAIS (Y2K & FRUTIGER AERO)
 ============================================ */
 *,
 *::before,
@@ -12,467 +12,324 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  /* Cursor clássico de mãozinha ou personalizado dos anos 2000 se preferir */
+  cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), auto;
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  color: #1f2937;
-  background-color: #ffffff;
+  /* Fontes icônicas do início dos anos 2000 misturadas com o visual Frutiger */
+  font-family: 'Tahoma', 'Segoe UI', -apple-system, sans-serif;
+  line-height: 1.4;
+  color: #0b2545;
+  /* Fundo clássico Frutiger Aero: Gradiente brilhante aurora + textura de água/grama */
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 40%, #00ffd0 100%);
+  background-attachment: fixed;
   overflow-x: hidden;
-}
-
-/* ============================================
-   VARIÁVEIS CSS (TEMA)
-============================================ */
-:root {
-  /* Cores principais */
-  --green-50: #f0fdf4;
-  --green-100: #dcfce7;
-  --green-200: #bbf7d0;
-  --green-300: #86efac;
-  --green-400: #4ade80;
-  --green-500: #22c55e;
-  --green-600: #16a34a;
-  --green-700: #15803d;
-  --green-800: #166534;
-  --green-900: #14532d;
-  
-  --red-600: #dc2626;
-  --red-700: #b91c1c;
-  --amber-500: #f59e0b;
-  --gray-500: #6b7280;
-  --gray-600: #4b5563;
-  --gray-700: #374151;
-  
-  /* Tipografia */
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-heading-weight: 700;
-  
-  /* Sombras */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  
-  /* Breakpoints */
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
-  
-  /* Transições */
-  --transition-fast: 150ms ease;
-  --transition-base: 250ms ease;
-  --transition-slow: 350ms ease;
-}
-
-/* ============================================
-   ELEMENTOS BASE
-============================================ */
-a {
-  text-decoration: none;
-  color: inherit;
-  transition: color var(--transition-fast);
-}
-
-button,
-input,
-textarea,
-select {
-  font-family: inherit;
-  font-size: 100%;
-}
-
-button {
-  cursor: pointer;
-  border: none;
-  background: none;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* ============================================
-   CLASSES UTILITÁRIAS (complementares)
-============================================ */
-.container {
-  max-width: 1280px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
-.section {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}
-
-/* Efeito gradiente em textos */
-.text-gradient {
-  background: linear-gradient(135deg, var(--green-600), var(--green-800));
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-/* ============================================
-   HEADER (STICKY + SOMBRA)
-============================================ */
-header {
-  background-color: var(--green-800);
-  color: white;
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  box-shadow: var(--shadow-md);
-  transition: box-shadow var(--transition-base);
-}
-
-header.scrolled {
-  box-shadow: var(--shadow-lg);
-}
-
-nav a {
-  font-weight: 500;
   position: relative;
 }
 
-nav a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--green-400);
-  transition: width var(--transition-base);
-}
-
-nav a:hover::after {
-  width: 100%;
-}
-
-/* Botão header */
-header button {
-  background-color: var(--green-600);
-  border-radius: 9999px;
-  padding: 0.5rem 1.5rem;
-  font-weight: 500;
-  transition: all var(--transition-base);
-}
-
-header button:hover {
-  background-color: var(--green-500);
-  transform: scale(1.02);
+/* Elemento decorativo de bolhas de fundo (Frutiger Aero) */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.6) 1%, transparent 8%),
+    radial-gradient(circle at 75% 15%, rgba(255,255,255,0.4) 2%, transparent 10%),
+    radial-gradient(circle at 50% 80%, rgba(255,255,255,0.5) 3%, transparent 12%);
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* ============================================
-   HERO SECTION
+   VARIÁVEIS CSS (TEMA FRUTIGER AERO & POP Y2K)
+============================================ */
+:root {
+  /* Cores Ultra-Glossy e Vibrantes */
+  --blue-bright: #00d2ff;
+  --blue-deep: #0066cc;
+  --green-lime: #39ff14;
+  --green-aero: #00ffaa;
+  --yellow-sun: #fff500;
+  --orange-pop: #ff6600;
+  
+  /* Efeito de Vidro Frutiger Aero (Glossy Glass) */
+  --glass-bg: rgba(255, 255, 255, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+  --inner-glow: inset 0 4px 12px rgba(255, 255, 255, 0.7);
+
+  /* Sombras e Bordas estilo Software Windows Vista/7 */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.15);
+  --shadow-md: 0 8px 16px rgba(0,0,0,0.2);
+  --shadow-xl: 0 15px 30px rgba(0,119,255,0.3);
+  
+  --transition-fast: 100ms linear;
+  --transition-base: 200ms ease-out;
+}
+
+/* ============================================
+   ELEMENTOS BASE & INTERATIVIDADE
+============================================ */
+a {
+  text-decoration: none;
+  color: var(--blue-deep);
+  font-weight: bold;
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8);
+  transition: all var(--transition-fast);
+}
+
+a:hover {
+  color: var(--orange-pop);
+  text-decoration: underline;
+  transform: skewX(-5deg);
+}
+
+/* Botões Estilo Skew/Glossy de Mídia Flash */
+button {
+  cursor: pointer;
+  border: 2px solid #ffffff;
+  border-radius: 50px; /* Botões hiper arredondados bolha */
+  padding: 0.6rem 1.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: linear-gradient(to bottom, #00d2ff 0%, #0066cc 100%);
+  color: white;
+  box-shadow: var(--shadow-sm), var(--inner-glow);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+/* Brilho Glossy passando pelo botão no Hover (Efeito Flash) */
+button::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: -60%; width: 30%; height: 200%;
+  background: rgba(255, 255, 255, 0.6);
+  transform: rotate(30deg);
+  transition: none;
+}
+
+button:hover::after {
+  left: 150%;
+  transition: all 0.5s ease-in-out;
+}
+
+button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,210,255,0.4), var(--inner-glow);
+  background: linear-gradient(to bottom, #00ffaa 0%, #0066cc 100%);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+/* ============================================
+   HEADER (BARRA DE MÍDIA / WINDOWS AERO)
+============================================ */
+header {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 2px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,0.8);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 10px 0;
+}
+
+nav a {
+  padding: 5px 15px;
+  border-radius: 15px;
+}
+
+/* Efeito Hover nos Links do Menu como abas do Internet Explorer */
+nav a:hover {
+  background: var(--glass-bg);
+  box-shadow: var(--inner-glow), var(--shadow-sm);
+  text-decoration: none;
+}
+
+/* ============================================
+   HERO SECTION (HUB DE CULTURA POP DE REPRODUTOR DE MÍDIA)
 ============================================ */
 .hero-bg {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url('https://source.unsplash.com/random/1920x1080/?soybean-field');
+  /* Substituído por um fundo hiper colorido techno-orgânico */
+  background: 
+    radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0.4) 100%),
+    url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80'); /* Arte abstrata digital glossy */
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
-  min-height: 100vh;
+  min-height: 85vh;
   display: flex;
   align-items: center;
   text-align: center;
-  animation: fadeIn 1s ease-out;
+  /* Bordas arredondadas gigantes simulando um Media Player antigo */
+  margin: 20px;
+  border-radius: 30px;
+  border: 4px solid var(--glass-border);
+  box-shadow: var(--shadow-md);
+  position: relative;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Efeito de linhas de scan de monitor CRT clássico Y2K */
+.hero-bg::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  background-size: 100% 4px, 6px 100%;
+  border-radius: 26px;
+  pointer-events: none;
 }
 
 .hero-bg h2 {
-  line-height: 1.2;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-.hero-bg a {
-  display: inline-block;
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
-}
-
-.hero-bg a:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-xl);
+  font-family: 'Impact', 'Arial Black', sans-serif;
+  font-size: 4rem;
+  color: var(--yellow-sun);
+  text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000, 5px 5px 0px var(--orange-pop);
+  letter-spacing: 2px;
 }
 
 /* ============================================
-   SEÇÕES GERAIS
+   CARDS & SOLUÇÕES (CÁPSULAS GLOSSY / FRUTIGER)
 ============================================ */
-section h2 {
-  font-weight: 700;
-  margin-bottom: 2rem;
-}
-
-/* Cards de tecnologia e soluções */
 .card {
-  background-color: white;
-  border-radius: 1.5rem;
-  padding: 2rem;
-  box-shadow: var(--shadow-md);
-  transition: all var(--transition-base);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 2px solid var(--glass-border);
+  border-radius: 2rem; /* Formato cápsula de bolha */
+  padding: 2.5rem;
+  box-shadow: var(--glass-shadow), var(--inner-glow);
   text-align: center;
+  transition: all var(--transition-base);
+  position: relative;
 }
 
+/* Reflexo de luz realista no topo do card (Frutiger Aero original) */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 5%; width: 90%; height: 40%;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%);
+  border-radius: 2rem 2rem 0 0;
+  pointer-events: none;
+}
+
+/* Interatividade extrema nos cards */
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-xl);
+  transform: scale(1.05) rotate(1deg);
+  background: rgba(255, 255, 255, 0.6);
+  border-color: var(--blue-bright);
+  box-shadow: 0 20px 40px rgba(0, 210, 255, 0.3), var(--inner-glow);
 }
 
 .card i {
-  font-size: 3rem;
-  color: var(--green-600);
-  margin-bottom: 1rem;
+  font-size: 3.5rem;
+  color: var(--blue-deep);
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15));
+  transition: transform var(--transition-base);
 }
 
-.card h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-/* Cards com fundo translúcido (soluções) */
-.backdrop-blur {
-  backdrop-filter: blur(8px);
-  background-color: rgba(255, 255, 255, 0.1);
+.card:hover i {
+  transform: rotateY(360deg) scale(1.2); /* Ícone roda em 3D no hover */
 }
 
 /* ============================================
-   CALCULADORA DE IMPACTO
+   ELEMENTOS INTERATIVOS & FORMULÁRIOS
 ============================================ */
-#acao .border-green-200 {
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
-}
-
-#acao .border-green-200:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
-}
-
 input,
 textarea {
-  border: 1px solid #e5e7eb;
-  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid var(--blue-deep);
+  border-radius: 20px;
   padding: 1rem;
-  width: 100%;
-  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+  color: #0b2545;
+  font-weight: 500;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
 }
 
+/* Interação de foco brilhante neon */
 input:focus,
 textarea:focus {
   outline: none;
-  border-color: var(--green-500);
-  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
-}
-
-button[onclick="calcularImpacto()"],
-button.w-full.bg-green-700,
-button.w-full.bg-amber-500 {
-  transition: all var(--transition-base);
-}
-
-button[onclick="calcularImpacto()"]:hover,
-button.w-full.bg-green-700:hover {
-  background-color: var(--green-600);
+  border-color: var(--green-lime);
+  background: #ffffff;
+  box-shadow: 0 0 15px var(--green-lime), inset 0 2px 5px rgba(0,0,0,0.1);
   transform: scale(1.01);
 }
 
-button.w-full.bg-amber-500:hover {
-  background-color: #d97706;
-  transform: scale(1.01);
+/* Estilo para a Calculadora / Caixas de Ação */
+#acao .border-green-200 {
+  background: rgba(255, 255, 255, 0.4);
+  border: 3px dashed var(--blue-bright) !important; /* Estilo de recorte de site antigo */
+  border-radius: 20px;
+  padding: 15px;
 }
 
-/* Resultado da calculadora */
+/* Animação Pixelada de Sucesso */
 #resultado {
-  animation: slideUp 0.4s ease-out;
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  border: 4px double var(--green-lime);
+  background: #000000;
+  color: var(--green-lime);
+  font-family: 'Courier New', monospace; /* Visual Hacker/Pixel 2000s */
+  padding: 15px;
+  border-radius: 10px;
+  text-shadow: 0 0 5px var(--green-lime);
 }
 
 /* ============================================
-   FOOTER
+   FOOTER (WEB 2.0 STYLE)
 ============================================ */
 footer {
-  background-color: var(--green-900);
-  color: white;
-  padding: 4rem 1.5rem;
-  text-align: center;
+  background: linear-gradient(to bottom, #0044aa 0%, #001144 100%);
+  border-top: 4px solid var(--blue-bright);
+  color: #a0c0ff;
+  padding: 3rem 1.5rem;
+  font-family: 'Courier New', monospace;
 }
 
-footer .fa-leaf {
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    text-shadow: 0 0 0 rgba(74, 222, 128, 0);
-  }
-  50% {
-    text-shadow: 0 0 8px rgba(74, 222, 128, 0.5);
-  }
-  100% {
-    text-shadow: 0 0 0 rgba(74, 222, 128, 0);
-  }
-}
-
-/* ============================================
-   RESPONSIVIDADE
-============================================ */
-/* Tablet (768px - 1023px) */
-@media (max-width: 1023px) {
-  .container {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-  
-  .hero-bg h2 {
-    font-size: 3rem;
-  }
-  
-  .hero-bg p {
-    font-size: 1.25rem;
-  }
-  
-  .grid.md\:grid-cols-2,
-  .grid.md\:grid-cols-3,
-  .grid.md\:grid-cols-4 {
-    gap: 1.5rem;
-  }
-}
-
-/* Celular (até 767px) */
-@media (max-width: 767px) {
-  html {
-    font-size: 14px;
-  }
-  
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  
-  .hero-bg {
-    background-attachment: scroll;
-    min-height: 90vh;
-  }
-  
-  .hero-bg h2 {
-    font-size: 2.5rem;
-  }
-  
-  .hero-bg p {
-    font-size: 1rem;
-  }
-  
-  header nav .hidden {
-    display: none;
-  }
-  
-  header button {
-    padding: 0.4rem 1rem;
-    font-size: 0.875rem;
-  }
-  
-  .section {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
-  
-  .card {
-    padding: 1.5rem;
-  }
-  
-  .card h3 {
-    font-size: 1.25rem;
-  }
-  
-  #acao .grid.md\:grid-cols-3 {
-    gap: 2rem;
-  }
-  
-  footer {
-    padding: 2rem 1rem;
-  }
-}
-
-/* Ajuste para telas muito pequenas (<=480px) */
-@media (max-width: 480px) {
-  .hero-bg h2 {
-    font-size: 2rem;
-  }
-  
-  .hero-bg a {
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-  }
-  
-  input, textarea {
-    padding: 0.75rem;
-  }
-}
-
-/* ============================================
-   ANIMAÇÕES ADICIONAIS
-============================================ */
-/* Efeito de entrada suave para seções ao scroll (opcional) */
-section {
-  animation: fadeInUp 0.6s ease-out backwards;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Aplica delay progressivo para cards dentro de grids */
-.grid > div:nth-child(1) { animation-delay: 0.05s; }
-.grid > div:nth-child(2) { animation-delay: 0.1s; }
-.grid > div:nth-child(3) { animation-delay: 0.15s; }
-.grid > div:nth-child(4) { animation-delay: 0.2s; }
-
-/* ============================================
-   MELHORIAS PARA BOTÕES E INTERAÇÃO
-============================================ */
-button:active {
-  transform: scale(0.98);
-}
-
-/* Estilo para links no footer */
 footer a {
-  color: var(--green-300);
+  color: var(--green-aero);
 }
 
 footer a:hover {
-  color: white;
-  text-decoration: underline;
+  color: var(--yellow-sun);
+  text-shadow: 0 0 8px var(--yellow-sun);
+}
+
+/* Animação da folha rodando loucamente (Estilo gif animado antigo) */
+footer .fa-leaf {
+  animation: spinFlash 1.5s infinite linear;
+  color: var(--green-lime);
+  font-size: 2rem;
+}
+
+@keyframes spinFlash {
+  0% { transform: rotate(0deg) scale(1); filter: drop-shadow(0 0 0px var(--green-lime)); }
+  50% { transform: rotate(180deg) scale(1.3); filter: drop-shadow(0 0 10px var(--green-lime)); }
+  100% { transform: rotate(360deg) scale(1); filter: drop-shadow(0 0 0px var(--green-lime)); }
+}
+
+/* ============================================
+   ANIMAÇÕES DE ENTRADA (POP-UP FLASH STYLE)
+============================================ */
+section {
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
