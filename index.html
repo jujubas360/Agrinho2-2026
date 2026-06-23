@@ -1,99 +1,65 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Y2K & Frutiger Aero Hub</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberDuck Tamagotchi 2000</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <header>
-    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-      <h1 style="font-family: 'Impact', sans-serif; color: #fff; text-shadow: 2px 2px #0066cc;">AERO.NET</h1>
-      <nav>
-        <a href="#solucoes">Soluções</a>
-        <a href="#acao">Impacto</a>
-        <a href="#contato">Contato</a>
-      </nav>
-      <button>Entrar</button>
-    </div>
-  </header>
+    <audio id="bg-music" loop>
+        <source src="wii-music.mp3" type="audio/mpeg">
+    </audio>
 
-  <section class="hero-bg">
-    <div class="container" style="position: relative; z-index: 2;">
-      <h2>BEM-VINDO AO FUTURO 2000</h2>
-      <p style="color: #fff; font-size: 1.5rem; font-weight: bold; text-shadow: 1px 1px 4px #000; margin-bottom: 2rem;">
-        Explore a fusão digital entre a estética glossy e o poder da tecnologia.
-      </p>
-      <button onclick="alert('Iniciando Download do Player... Just kidding!')">Baixar Agora</button>
-    </div>
-  </section>
-
-  <section id="solucoes" class="section">
-    <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-      
-      <div class="card">
-        <i class="fa-solid fa-compact-disc"></i>
-        <h3>Mídia Digital</h3>
-        <p>Streaming e interatividade em alta velocidade direto no seu navegador.</p>
-      </div>
-
-      <div class="card">
-        <i class="fa-solid fa-cloud-bolt"></i>
-        <h3>Nuvem Aero</h3>
-        <p>Seus dados guardados em uma interface de vidro ultra-rápida.</p>
-      </div>
-
-      <div class="card">
-        <i class="fa-solid fa-globe"></i>
-        <h3>Web 2.0</h3>
-        <p>A internet viva, colorida e cheia de conexões dinâmicas.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="acao" class="section">
-    <div class="container" style="max-width: 600px;">
-      <div class="border-green-200">
-        <h2 style="text-align: center; font-family: 'Impact', sans-serif; color: #0066cc; margin-bottom: 1rem;">CALCULADORA DE IMPACTO</h2>
+    <div class="cyber-container">
+        <h1 class="neon-text-green">CYBER-DUCK v1.0</h1>
         
-        <div style="margin-bottom: 1rem;">
-          <label style="display:block; font-weight:bold; margin-bottom: 0.5rem;">Digite o valor para calcular:</label>
-          <input type="number" id="valorImpacto" placeholder="Ex: 100">
+        <div class="tamagotchi-case">
+            <div class="case-horn left"></div>
+            <div class="case-horn right"></div>
+            
+            <div class="screen-border">
+                <div class="screen" id="game-screen">
+                    
+                    <div class="status-bar">
+                        <span id="status-text">FELIZ</span>
+                    </div>
+
+                    <div class="pet-container">
+                        <div class="cyber-pet" id="pet">
+                            <div class="pet-horn-left"></div>
+                            <div class="pet-horn-right"></div>
+                            <div class="pet-body">
+                                <div class="pet-eye"></div>
+                                <div class="pet-beak"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stats-display">
+                        <div>FOME: <span id="stat-hunger">0</span>%</div>
+                        <div>TÉDIO: <span id="stat-boredom">0</span>%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="buttons-container">
+                <button class="tamo-btn" id="btn-feed" title="Alimentar">A</button>
+                <button class="tamo-btn" id="btn-play" title="Brincar">B</button>
+                <button class="tamo-btn" id="btn-reset" title="Reiniciar">C</button>
+            </div>
+            <div class="button-labels">
+                <span>FEED</span>
+                <span>PLAY</span>
+                <span>RESET</span>
+            </div>
         </div>
-
-        <button style="width: 100%; margin-bottom: 1rem;" onclick="calcularImpacto()">CALCULAR AGORA</button>
-
-        <div id="resultado">
-          > Sistema pronto. Aguardando dados...
-        </div>
-      </div>
+        
+        <p class="instruction">CLIQUE EM QUALQUER LUGAR PARA LIGAR O SOM (WII MUSIC)</p>
     </div>
-  </section>
 
-  <footer>
-    <div class="container">
-      <p style="margin-bottom: 1rem;"><i class="fa-solid fa-leaf"></i></p>
-      <p>© 2000-2026 AERO.NET - Todos os direitos reservados.</p>
-      <p style="margin-top: 1rem;">
-        <a href="#">Termos de Uso</a> | <a href="#">Voltar ao Topo</a>
-      </p>
-    </div>
-  </footer>
-
-  <script>
-    function calcularImpacto() {
-      const valor = document.getElementById('valorImpacto').value;
-      const resultadoDiv = document.getElementById('resultado');
-      if(valor) {
-        resultadoDiv.innerHTML = `> PROCESSANDO INTERAÇÃO...<br>> IMPACTO GERADO: ${(valor * 4.2).toFixed(2)} Xp MegaFlops!`;
-      } else {
-        resultadoDiv.innerHTML = `> ERRO: INSIRA UM VALOR VÁLIDO!`;
-      }
-    }
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
