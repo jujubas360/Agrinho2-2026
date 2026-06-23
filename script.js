@@ -2,38 +2,68 @@
 let hunger = 0;
 let boredom = 0;
 let isDead = false;
+let gameStarted = false;
+let player;
 
 // Elementos do DOM
 const pet = document.getElementById('pet');
 const statHunger = document.getElementById('stat-hunger');
 const statBoredom = document.getElementById('stat-boredom');
 const statusText = document.getElementById('status-text');
-const bgMusic = document.getElementById('bg-music');
 
 // Botões
 const btnFeed = document.getElementById('btn-feed');
 const btnPlay = document.getElementById('btn-play');
 const btnReset = document.getElementById('btn-reset');
 
-// Ativar a música no primeiro clique na página (Regra dos Navegadores)
-document.body.addEventListener('click', () => {
-    if (bgMusic.paused && !isDead) {
-        bgMusic.volume = 0.4; // Volume ambiente
-        bgMusic.play().catch(err => console.log("Áudio aguardando interação."));
+// 1. Configuração da API do YouTube para tocar o link enviado
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('youtube-player', {
+        height: '0',
+        width: '0',
+        videoId: 'Pn61zKFkf2A', // ID do vídeo que você enviou
+        playerVars: {
+            'autoplay': 0,
+            'loop': 1,
+            'playlist': 'Pn61zKFkf2A' // Necessário para fazer o loop funcionar no YT
+        },
+        events: {
+            'onReady': onPlayerReady
+        }
+    });
+}
+
+function onPlayerReady(event) {
+    statusText.innerText = "PRONTO!";
+}
+
+// Função para dar o "Play" no som na primeira interação do usuário
+function startMusic() {
+    if (!gameStarted && player && typeof player.playVideo === 'function') {
+        player.setVolume(30); // Volume em 30% para não estourar
+        player.playVideo();
+        gameStarted = true;
+        startGameLoop();
     }
-});
+}
 
-// Loop principal do Jogo (Roda a cada 2.5 segundos)
-const gameLoop = setInterval(() => {
-    if (isDead) return;
+// 2. Loop principal do Jogo
+let gameLoop;
+function startGameLoop() {
+    pet.className = "cyber-pet bounce";
+    statusText.innerText = "FELIZ";
+    
+    gameLoop = setInterval(() => {
+        if (isDead) return;
 
-    // Aumenta status de necessidade
-    hunger = Math.min(hunger + 8, 100);
-    boredom = Math.min(boredom + 12, 100);
+        // O patinho sente fome e tédio passivamente
+        hunger = Math.min(hunger + 5, 100);
+        boredom = Math.min(boredom + 8, 100);
 
-    updateStats();
-    checkMood();
-}, 2500);
+        updateStats();
+        checkMood();
+    }, 2000); // Atualiza a cada 2 segundos
+}
 
 // Atualiza os números na tela
 function updateStats() {
@@ -41,7 +71,7 @@ function updateStats() {
     statBoredom.innerText = boredom;
 }
 
-// Verifica o humor ou se o pato morreu
+// Verifica as condições de saúde do bichinho
 function checkMood() {
     if (hunger >= 100 || boredom >= 100) {
         die();
@@ -56,44 +86,48 @@ function checkMood() {
     }
 }
 
-// Função de Morte do Bichinho
+// Função Game Over
 function die() {
     isDead = true;
     statusText.innerText = "GAME OVER";
     statusText.style.color = "#ff0000";
     pet.className = "cyber-pet dead";
-    bgMusic.pause(); // Para a música do Wii se ele morrer
+    
+    if (player && typeof player.stopVideo === 'function') {
+        player.stopVideo(); // Para a música se ele morrer
+    }
     clearInterval(gameLoop);
 }
 
-// Ações dos Botões (Interações)
+// 3. Interações dos Botões
 btnFeed.addEventListener('click', () => {
+    startMusic(); // Tenta ligar o som se for o primeiro clique
     if (isDead) return;
-    hunger = Math.max(hunger - 25, 0);
     
-    // Animação rápida de comendo
+    hunger = Math.max(hunger - 20, 0);
+    updateStats();
+    
+    // Animação de comer
     pet.className = "cyber-pet eating";
     setTimeout(checkMood, 600);
-    updateStats();
 });
 
 btnPlay.addEventListener('click', () => {
+    startMusic(); // Tenta ligar o som se for o primeiro clique
     if (isDead) return;
-    boredom = Math.max(boredom - 30, 0);
     
-    // Efeito visual de pulo rápido ao brincar
-    pet.style.transform = "scale(1.4) translateY(-15px)";
+    boredom = Math.max(boredom - 25, 0);
+    updateStats();
+    
+    // Animação de pulo
+    pet.style.transform = "scale(1.3) translateY(-20px)";
     setTimeout(() => {
         pet.style.transform = "none";
         checkMood();
     }, 300);
-    updateStats();
 });
 
-// Reiniciar o Jogo (Botão C)
+// Botão de Reiniciar (C)
 btnReset.addEventListener('click', () => {
     location.reload();
 });
-
-// Inicia o Pato com a animação de pulinho
-pet.className = "cyber-pet bounce";
