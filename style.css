@@ -1,331 +1,217 @@
-/* ============================================
-   RESET & CONFIGURAÇÕES GLOBAIS (Y2K & FRUTIGER AERO)
-============================================ */
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-  cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), auto;
+/* Reset e Fonte estilo Arcade */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Press Start 2P', monospace;
+    image-rendering: pixelated;
 }
 
 body {
-  font-family: 'Tahoma', 'Segoe UI', -apple-system, sans-serif;
-  line-height: 1.4;
-  color: #0b2545;
-  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 40%, #00ffd0 100%);
-  background-attachment: fixed;
-  overflow-x: hidden;
-  position: relative;
+    background-color: #0d0211;
+    background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 4px, 6px 100%;
+    color: #00ff66;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.6) 1%, transparent 8%),
-    radial-gradient(circle at 75% 15%, rgba(255,255,255,0.4) 2%, transparent 10%),
-    radial-gradient(circle at 50% 80%, rgba(255,255,255,0.5) 3%, transparent 12%);
-  pointer-events: none;
-  z-index: -1;
+.cyber-container {
+    text-align: center;
 }
 
-/* ============================================
-   VARIÁVEIS CSS (TEMA FRUTIGER AERO & POP Y2K)
-============================================ */
-:root {
-  --blue-bright: #00d2ff;
-  --blue-deep: #0066cc;
-  --green-lime: #39ff14;
-  --green-aero: #00ffaa;
-  --yellow-sun: #fff500;
-  --orange-pop: #ff6600;
-  
-  --glass-bg: rgba(255, 255, 255, 0.45);
-  --glass-border: rgba(255, 255, 255, 0.6);
-  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
-  --inner-glow: inset 0 4px 12px rgba(255, 255, 255, 0.7);
-
-  --shadow-sm: 0 2px 4px rgba(0,0,0,0.15);
-  --shadow-md: 0 8px 16px rgba(0,0,0,0.2);
-  --shadow-xl: 0 15px 30px rgba(0,119,255,0.3);
-  
-  --transition-fast: 100ms linear;
-  --transition-base: 200ms ease-out;
+.neon-text-green {
+    font-size: 1.2rem;
+    color: #00ff66;
+    text-shadow: 0 0 10px #00ff66, 0 0 20px #00ff66;
+    margin-bottom: 25px;
 }
 
-/* ============================================
-   ELEMENTOS BASE & INTERATIVIDADE
-============================================ */
-.container {
-  max-width: 1280px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+/* O Aparelho Tamagotchi */
+.tamagotchi-case {
+    position: relative;
+    width: 320px;
+    height: 420px;
+    background: #1a0033;
+    border: 6px solid #ff00ff;
+    border-radius: 60px 60px 80px 80px;
+    box-shadow: 0 0 25px #ff00ff, inset 0 0 20px #000;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.section {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+/* Chifres do Aparelho */
+.case-horn {
+    position: absolute;
+    top: -20px;
+    width: 30px;
+    height: 40px;
+    background: #ff00ff;
+    border: 4px solid #0d0211;
+    box-shadow: 0 0 10px #ff00ff;
+}
+.case-horn.left { left: 50px; transform: rotate(-15deg); border-radius: 10px 0 0 0; }
+.case-horn.right { right: 50px; transform: rotate(15deg); border-radius: 0 10px 0 0; }
+
+/* Tela do Aparelho */
+.screen-border {
+    width: 100%;
+    height: 220px;
+    background: #222;
+    border: 5px solid #00ffff;
+    box-shadow: 0 0 15px #00ffff;
+    padding: 10px;
+    border-radius: 10px;
 }
 
-a {
-  text-decoration: none;
-  color: var(--blue-deep);
-  font-weight: bold;
-  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8);
-  transition: all var(--transition-fast);
+.screen {
+    width: 100%;
+    height: 100%;
+    background: #051105;
+    border: 3px solid #113311;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8px;
+    overflow: hidden;
 }
 
-a:hover {
-  color: var(--orange-pop);
-  text-decoration: underline;
-  transform: skewX(-5deg);
+/* Elementos de Interface Internos */
+.status-bar {
+    font-size: 0.6rem;
+    color: #ff00ff;
+    text-shadow: 0 0 5px #ff00ff;
+    text-align: center;
+    border-bottom: 2px dashed #113311;
+    padding-bottom: 4px;
 }
 
-button {
-  cursor: pointer;
-  border: 2px solid #ffffff;
-  border-radius: 50px;
-  padding: 0.6rem 1.8rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  background: linear-gradient(to bottom, #00d2ff 0%, #0066cc 100%);
-  color: white;
-  box-shadow: var(--shadow-sm), var(--inner-glow);
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-  position: relative;
-  overflow: hidden;
-  transition: all var(--transition-base);
+.stats-display {
+    font-size: 0.5rem;
+    color: #00ff66;
+    display: flex;
+    justify-content: space-between;
+    border-top: 2px dashed #113311;
+    padding-top: 4px;
 }
 
-button::after {
-  content: '';
-  position: absolute;
-  top: -50%; left: -60%; width: 30%; height: 200%;
-  background: rgba(255, 255, 255, 0.6);
-  transform: rotate(30deg);
-  transition: none;
+/* O MASCOTE (Construído em Pixel Art via CSS) */
+.pet-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-button:hover::after {
-  left: 150%;
-  transition: all 0.5s ease-in-out;
+.cyber-pet {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    transition: transform 0.1s ease;
 }
 
-button:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 10px 20px rgba(0,210,255,0.4), var(--inner-glow);
-  background: linear-gradient(to bottom, #00ffaa 0%, #0066cc 100%);
+/* Chifres do Pato */
+.pet-horn-left, .pet-horn-right {
+    position: absolute;
+    top: -12px;
+    width: 6px;
+    height: 14px;
+    background: #00ffff;
+    box-shadow: 0 0 8px #00ffff;
+}
+.pet-horn-left { left: 10px; transform: rotate(-20deg); }
+.pet-horn-right { right: 10px; transform: rotate(20deg); }
+
+/* Corpo de Pato */
+.pet-body {
+    width: 100%;
+    height: 100%;
+    background: #ff007f;
+    box-shadow: 0 0 12px #ff007f;
+    border-radius: 12px;
+    position: relative;
 }
 
-button:active {
-  transform: scale(0.98);
+.pet-eye {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 6px;
+    height: 6px;
+    background: #000;
 }
 
-/* ============================================
-   HEADER (BARRA DE MÍDIA / WINDOWS AERO)
-============================================ */
-header {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border-bottom: 2px solid var(--glass-border);
-  box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,0.8);
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  padding: 10px 0;
+.pet-beak {
+    position: absolute;
+    top: 18px;
+    right: -8px;
+    width: 14px;
+    height: 10px;
+    background: #ffea00;
+    box-shadow: 0 0 5px #ffea00;
+    border-radius: 0 4px 4px 0;
 }
 
-nav a {
-  padding: 5px 15px;
-  border-radius: 15px;
+/* Animações de Estado (JavaScript adiciona essas classes) */
+.bounce { animation: bounceAnim 0.6s infinite alternate; }
+.eating { animation: eatAnim 0.3s cubic-bezier(.36,.07,.19,.97) infinite; }
+.sad { filter: hue-rotate(90deg); opacity: 0.8; } /* Muda a cor se estiver triste */
+.dead { transform: rotate(180deg) scale(0.8); filter: grayscale(1); }
+
+@keyframes bounceAnim {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+}
+@keyframes eatAnim {
+    0% { transform: scale(1) translateX(0); }
+    50% { transform: scale(1.2) translateX(5px); }
+    100% { transform: scale(1) translateX(0); }
 }
 
-nav a:hover {
-  background: var(--glass-bg);
-  box-shadow: var(--inner-glow), var(--shadow-sm);
-  text-decoration: none;
+/* Botões do Console */
+.buttons-container {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
 }
 
-/* ============================================
-   HERO SECTION
-============================================ */
-.hero-bg {
-  background: 
-    radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0.4) 100%),
-    url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80');
-  background-size: cover;
-  background-position: center;
-  min-height: 85vh;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  margin: 20px;
-  border-radius: 30px;
-  border: 4px solid var(--glass-border);
-  box-shadow: var(--shadow-md);
-  position: relative;
+.tamo-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #00ffff;
+    border: 4px solid #008888;
+    box-shadow: 0 4px 0 #005555, 0 0 10px #00ffff;
+    color: #000;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.05s;
 }
 
-.hero-bg::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-  background-size: 100% 4px, 6px 100%;
-  border-radius: 26px;
-  pointer-events: none;
+.tamo-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 0px 0 #005555, 0 0 5px #00ffff;
 }
 
-.hero-bg h2 {
-  font-family: 'Impact', 'Arial Black', sans-serif;
-  font-size: 4rem;
-  color: var(--yellow-sun);
-  text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000, 5px 5px 0px var(--orange-pop);
-  letter-spacing: 2px;
+.button-labels {
+    margin-top: 5px;
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.5rem;
+    color: #ff00ff;
 }
 
-/* ============================================
-   CARDS & SOLUÇÕES (CÁPSULAS GLOSSY / FRUTIGER)
-============================================ */
-.card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 2px solid var(--glass-border);
-  border-radius: 2rem;
-  padding: 2.5rem;
-  box-shadow: var(--glass-shadow), var(--inner-glow);
-  text-align: center;
-  transition: all var(--transition-base);
-  position: relative;
-}
-
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 5%; width: 90%; height: 40%;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%);
-  border-radius: 2rem 2rem 0 0;
-  pointer-events: none;
-}
-
-.card:hover {
-  transform: scale(1.05) rotate(1deg);
-  background: rgba(255, 255, 255, 0.6);
-  border-color: var(--blue-bright);
-  box-shadow: 0 20px 40px rgba(0, 210, 255, 0.3), var(--inner-glow);
-}
-
-.card i {
-  font-size: 3.5rem;
-  color: var(--blue-deep);
-  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15));
-  transition: transform var(--transition-base);
-}
-
-.card:hover i {
-  transform: rotateY(360deg) scale(1.2);
-}
-
-/* ============================================
-   ELEMENTOS INTERATIVOS & FORMULÁRIOS
-============================================ */
-input,
-textarea {
-  background: rgba(255, 255, 255, 0.8);
-  border: 2px solid var(--blue-deep);
-  border-radius: 20px;
-  padding: 1rem;
-  color: #0b2545;
-  font-weight: 500;
-  width: 100%;
-  box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
-  transition: all var(--transition-base);
-}
-
-input:focus,
-textarea:focus {
-  outline: none;
-  border-color: var(--green-lime);
-  background: #ffffff;
-  box-shadow: 0 0 15px var(--green-lime), inset 0 2px 5px rgba(0,0,0,0.1);
-  transform: scale(1.01);
-}
-
-#acao .border-green-200 {
-  background: rgba(255, 255, 255, 0.4);
-  border: 3px dashed var(--blue-bright) !important;
-  border-radius: 20px;
-  padding: 25px;
-}
-
-#resultado {
-  border: 4px double var(--green-lime);
-  background: #000000;
-  color: var(--green-lime);
-  font-family: 'Courier New', monospace;
-  padding: 15px;
-  border-radius: 10px;
-  text-shadow: 0 0 5px var(--green-lime);
-}
-
-/* ============================================
-   FOOTER (WEB 2.0 STYLE)
-============================================ */
-footer {
-  background: linear-gradient(to bottom, #0044aa 0%, #001144 100%);
-  border-top: 4px solid var(--blue-bright);
-  color: #a0c0ff;
-  padding: 3rem 1.5rem;
-  text-align: center;
-}
-
-footer a {
-  color: var(--green-aero);
-}
-
-footer a:hover {
-  color: var(--yellow-sun);
-  text-shadow: 0 0 8px var(--yellow-sun);
-}
-
-footer .fa-leaf {
-  animation: spinFlash 1.5s infinite linear;
-  color: var(--green-lime);
-  display: inline-block;
-}
-
-@keyframes spinFlash {
-  0% { transform: rotate(0deg) scale(1); filter: drop-shadow(0 0 0px var(--green-lime)); }
-  50% { transform: rotate(180deg) scale(1.3); filter: drop-shadow(0 0 10px var(--green-lime)); }
-  100% { transform: rotate(360deg) scale(1); filter: drop-shadow(0 0 0px var(--green-lime)); }
-}
-
-/* ============================================
-   ANIMAÇÕES DE ENTRADA
-============================================ */
-section {
-  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-}
-
-@keyframes popIn {
-  from {
-    opacity: 0;
-    transform: scale(0.8) translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
+.instruction {
+    margin-top: 20px;
+    font-size: 0.45rem;
+    color: #555;
 }
